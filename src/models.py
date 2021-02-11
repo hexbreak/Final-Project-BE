@@ -17,3 +17,16 @@ class User(db.Model):
             "email": self.email,
             # do not serialize the password, its a security breach
         }
+
+class MyPlayList(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    progression_status = db.Column(String(500), nullable=False)
+
+    def __repr__(self):
+        return '<User %r>' % self.username
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "progression_status": ""
+        }
